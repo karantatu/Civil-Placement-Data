@@ -6,132 +6,141 @@
 <title>Civil Placement Data</title>
 
 <style>
-  :root{
-    --brand:#0f4c81;
-    --muted:#6b7280;
-    --bg:#f6f8fb;
-    --card:#ffffff;
-    --accent:#2563eb;
-    --radius:10px;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    background:var(--bg);
-    color:#0b1220;
-  }
+:root{
+  --brand:#0f4c81;
+  --muted:#6b7280;
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --accent:#2563eb;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background:var(--bg);
+  color:#0b1220;
+}
 
-  header{
-    background:linear-gradient(90deg,var(--brand),#143f6b);
-    color:white;
-    padding:20px 16px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 2px 6px rgba(0,0,0,0.15);
-  }
-  header h1{ margin:0; font-size:22px; }
-  header p{ margin:6px 0 0; font-size:13px; opacity:0.9; }
+/* Main header */
+header{
+  background:linear-gradient(90deg,var(--brand),#143f6b);
+  color:white;
+  padding:20px 16px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+header h1{ margin:0; font-size:22px; }
+header p{ margin:6px 0 0; font-size:13px; opacity:0.9; }
 
-  main{
-    max-width:1100px;
-    margin:0 auto;
-    padding:16px;
-  }
+main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:16px;
+}
 
-  /* Search box */
-  #searchBox{
-    width:100%;
-    padding:12px 14px;
-    font-size:15px;
-    border-radius:8px;
-    border:1px solid #d0d7e1;
-    margin-bottom:18px;
-  }
-  #searchBox:focus{
-    outline:none;
-    border-color:var(--accent);
-    box-shadow:0 0 0 2px rgba(37,99,235,0.15);
-  }
+/* Search box */
+#searchBox{
+  width:100%;
+  padding:12px 14px;
+  font-size:15px;
+  border-radius:8px;
+  border:1px solid #d0d7e1;
+  margin-bottom:18px;
+}
+#searchBox:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15);
+}
 
-  .batch{ margin-bottom:28px; }
-  .batch-header{
-    font-size:18px;
-    color:var(--brand);
-    font-weight:600;
-    margin-bottom:14px;
-  }
+.batch{ margin-bottom:28px; }
+.batch-header{
+  font-size:18px;
+  color:var(--brand);
+  font-weight:600;
+  margin-bottom:14px;
+}
 
-  .division-card{
-    background:var(--card);
-    border-radius:var(--radius);
-    padding:14px;
-    box-shadow:0 4px 14px rgba(12,20,40,0.06);
-    margin-bottom:14px;
-  }
+.division-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow:0 4px 14px rgba(12,20,40,0.06);
+  margin-bottom:14px;
+}
 
-  .division-title{
-    font-size:15px;
-    margin-bottom:10px;
-    font-weight:600;
-  }
+.division-title{
+  font-size:15px;
+  margin-bottom:6px;
+  font-weight:600;
+}
 
-  .table-wrap{
-    overflow:auto;
-    border-radius:8px;
-  }
+/* Table wrapper */
+.table-wrap{
+  overflow:auto;
+  border-radius:8px;
+  max-height:400px; /* optional: scrollable if too tall */
+}
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:880px;
-  }
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:880px;
+}
 
+th, td{
+  padding:10px 12px;
+  text-align:left;
+  font-size:14px;
+  border-bottom:1px solid #eef2f6;
+  word-wrap:break-word;
+  white-space:normal;
+  cursor:default;
+}
+
+th{
+  background:#eef6ff;
+  font-weight:600;
+  position:sticky;
+  top:0;
+  z-index:5;
+  cursor:pointer;
+}
+
+.btn{
+  background:var(--accent);
+  color:white;
+  padding:6px 10px;
+  border-radius:7px;
+  font-size:13px;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.empty{
+  color:var(--muted);
+  font-style:italic;
+}
+
+.record-count{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+@media (max-width:880px){
   th, td{
-    padding:10px 12px;
-    text-align:left;
-    font-size:14px;
-    border-bottom:1px solid #eef2f6;
-    word-wrap:break-word;
-    white-space:normal;
-    cursor:default;
-  }
-
-  th{
-    background:#eef6ff;
-    font-weight:600;
-    position:sticky;
-    top:0;
-    z-index:5;
-    cursor:pointer;
-  }
-
-  .btn{
-    background:var(--accent);
-    color:white;
-    padding:6px 10px;
-    border-radius:7px;
+    padding:8px 10px;
     font-size:13px;
-    text-decoration:none;
-    display:inline-block;
   }
-
-  .empty{
-    color:var(--muted);
-    font-style:italic;
+  table{
+    min-width:720px;
   }
-
-  @media (max-width:880px){
-    th, td{
-      padding:8px 10px;
-      font-size:13px;
-    }
-    table{
-      min-width:720px;
-    }
-  }
+}
 </style>
 </head>
 
@@ -152,15 +161,12 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbzZktXlHMkMdYk20t7InRdMe4TgdALW7jeulQEV53Wg1rSL8ruteB8VyE1FqvlZ3vay_Q/exec";
 let GLOBAL_DATA = {};
 
-// Utilities
 function escapeHtml(s){ return String(s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function isUrl(s){ return typeof s === "string" && /^https?:\/\//i.test(s.trim()); }
 
-// Build table HTML with total count
 function buildTable(rows){
-  let html = `
+  let html = `<div class="record-count">Total Records: ${rows.length}</div>
     <div class="table-wrap">
-      <div style="margin-bottom:6px; font-size:14px; color:var(--muted)">Total Records: ${rows.length}</div>
       <table>
         <thead>
           <tr>
@@ -194,7 +200,6 @@ function buildTable(rows){
   return html;
 }
 
-// Make table sortable
 function makeSortable(table){
   const headers = table.querySelectorAll("th[data-key]");
   headers.forEach(header=>{
@@ -214,7 +219,6 @@ function makeSortable(table){
   });
 }
 
-// Render all batches/divisions
 function render(data){
   const root = document.getElementById("app");
   root.innerHTML = `<div style="margin-top:14px; text-align:center;">
@@ -236,17 +240,15 @@ function render(data){
       card.className = "division-card";
       card.innerHTML = `<div class="division-title">Division ${div}</div>` + buildTable(rows);
       sec.appendChild(card);
-      root.appendChild(sec);
-
       makeSortable(card.querySelector("table"));
     });
+
+    root.appendChild(sec);
   });
 
-  // Search
   document.getElementById("searchBox").addEventListener("input", applySearch);
 }
 
-// Live search
 function applySearch(){
   const q = document.getElementById("searchBox").value.trim().toLowerCase();
   const rows = document.querySelectorAll("tbody tr");
@@ -255,7 +257,6 @@ function applySearch(){
   });
 }
 
-// Fetch data
 function loadData(){
   fetch(API_URL)
     .then(res=>res.json())
@@ -270,6 +271,5 @@ function loadData(){
 
 loadData();
 </script>
-
 </body>
 </html>
